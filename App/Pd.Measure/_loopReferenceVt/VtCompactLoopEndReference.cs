@@ -53,19 +53,19 @@ public readonly struct VtCompactLoopEndReference
         return $"{PadId} at {LoopId}";
     }
 
-    internal string SerializeCompact()
+    public string SerializeCompact()
     {
         if (IsEmpty)
             return "";
         var sb = new StringBuilder(64);
         sb.Append(LoopId.Value.ToString("N"));
-        sb.Append("|");
+        sb.Append('|');
 
         sb.Append(PadId.ComponentUid.Value.ToString("N"));
-        sb.Append("|");
+        sb.Append('|');
 
         sb.Append(PadId.EndIndex.ToInvariantString());
-        sb.Append("|");
+        sb.Append('|');
 
         sb.Append(PadId.WireIndex.Value.ToInvariantString());
         return sb.ToString();
