@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pd.Measure", "Pd.Measure\Pd.Measure.csproj", "{ED4A3788-F7E9-4A17-8663-EC90EE7B3A13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pd.Interfaces.Common", "Pd.Interfaces.Common\Pd.Interfaces.Common.csproj", "{CB034AAC-3589-4735-AB41-93FC69EF023F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pd.Interfaces.Geometry", "Pd.Interfaces.Geometry\Pd.Interfaces.Geometry.csproj", "{5CDD7314-B093-42AD-9BFD-36373324A259}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED4A3788-F7E9-4A17-8663-EC90EE7B3A13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED4A3788-F7E9-4A17-8663-EC90EE7B3A13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED4A3788-F7E9-4A17-8663-EC90EE7B3A13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED4A3788-F7E9-4A17-8663-EC90EE7B3A13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB034AAC-3589-4735-AB41-93FC69EF023F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB034AAC-3589-4735-AB41-93FC69EF023F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB034AAC-3589-4735-AB41-93FC69EF023F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB034AAC-3589-4735-AB41-93FC69EF023F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CDD7314-B093-42AD-9BFD-36373324A259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CDD7314-B093-42AD-9BFD-36373324A259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CDD7314-B093-42AD-9BFD-36373324A259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CDD7314-B093-42AD-9BFD-36373324A259}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

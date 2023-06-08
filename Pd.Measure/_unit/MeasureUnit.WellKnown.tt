@@ -1,0 +1,84 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+using System.Collections.Generic;
+
+namespace Pd.Measure;
+
+public sealed partial class MeasureUnit
+{
+    public partial class WellKnown {
+<#
+    foreach (var d in Get())
+    {
+#>
+        public static MeasureUnit <#= d.VariableName #> {
+            get {
+                return new MeasureUnit(MeasuredValue.<#= d.Kind #>, "<#= d.UnitName #>", <#= d.Factor #>); 
+            }
+        }
+<#
+    }
+#>
+        // =========================================
+
+        public static IReadOnlyDictionary<string, MeasureUnit> GetDictionary() {
+            var dict = new Dictionary<string, MeasureUnit>();
+<#
+    foreach (var d in Get())
+    {
+#>
+            dict["<#= d.UnitName #>"] = <#= d.VariableName #>;
+<#
+    }
+#>
+            return dict;
+        }
+    }
+}
+
+<#+
+    private class Data
+    {
+        public string VariableName { get; set; }
+        public string UnitName { get; set; }
+        public string Factor { get; set; }
+        public string Kind { get; set; }
+    }
+
+    private static IEnumerable<Data> Get(string data, string kind)
+    {
+        foreach (var i in data.Split('\r', '\n'))
+        {
+            var a = i.Split(',');
+            if (a.Length < 3) continue;
+            var q = new Data
+            {
+                VariableName = a[0].Trim(),
+                UnitName = a[1].Trim(),
+                Factor = a[2].Trim(),
+                Kind = kind
+            };
+            if (!q.Factor.EndsWith("m"))
+                q.Factor += "m";
+            q.VariableName = q.Kind + q.VariableName;
+            yield return q;
+        }
+    }
+
+    private static IEnumerable<Data> Get()
+    {
+        var resistance = @"
+Ohm,Ω,1
+KiloOhm,kΩ,1000
+MegaOhm,MΩ,1000_000
+GigaOhm,GΩ,1000_000_000
+";
+        var voltage = @"
+Volt,V,1
+MiliVolt,mV,0.001
+";
+        return Get(resistance, "Resistance").Concat(Get(voltage, "Voltage"));
+    }
+#>
