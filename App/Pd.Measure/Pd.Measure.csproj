@@ -4,9 +4,9 @@
     <PropertyGroup>
         <ProjectGuid>{269E0760-48B1-478D-9496-C25B8B64DF87}</ProjectGuid>
         <TargetFramework>net7.0</TargetFramework>
-        <AssemblyVersion>1.23.608.2</AssemblyVersion>
-        <FileVersion>1.23.608.2</FileVersion>
-        <Version>1.23.608.2</Version>
+        <AssemblyVersion>1.23.608.4</AssemblyVersion>
+        <FileVersion>1.23.608.4</FileVersion>
+        <Version>1.23.608.4</Version>
         <PackageId>Pd.Measure</PackageId>
         <Title>Zestaw opisujący dane związane z pomiarami rurociągu ciepłowniczego. Służy do integracji z oprogramowaniem PipelineDesigner</Title>
     </PropertyGroup>

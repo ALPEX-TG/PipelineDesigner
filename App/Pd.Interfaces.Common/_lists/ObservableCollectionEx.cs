@@ -12,7 +12,7 @@ namespace Pd.Interfaces.Common
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ObservableCollectionEx<T> Make<T>(NotifyCollectionChangedEventHandler? handler = null)
         {
-            var result = Make<T>();
+            var result = new ObservableCollectionEx<T>();
             if (handler != null)
                 result.CollectionChanged += handler;
             return result;
