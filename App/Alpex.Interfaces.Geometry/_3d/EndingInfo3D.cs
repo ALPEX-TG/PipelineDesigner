@@ -1,7 +1,6 @@
-﻿using System.Windows.Media.Media3D;
-using iSukces.Mathematics;
+﻿using iSukces.Mathematics;
 #if WPF
-
+using System.Windows.Media.Media3D;
 #else
 using iSukces.Mathematics.Compatibility;
 #endif

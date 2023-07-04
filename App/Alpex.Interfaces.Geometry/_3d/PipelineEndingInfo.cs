@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Media.Media3D;
 using iSukces.Mathematics;
 using JetBrains.Annotations;
-
 #if WPF
-
+using System.Windows.Media.Media3D;
 #else
 using iSukces.Mathematics.Compatibility;
 #endif

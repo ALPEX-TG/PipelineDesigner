@@ -1,47 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="../NugetCommon.props" />
-    <PropertyGroup>
-        <ProjectGuid>{6D77B3F7-64C0-4749-B686-DA88FB390A0D}</ProjectGuid>
-        <TargetFramework>net7.0-windows</TargetFramework>
-        <AssemblyVersion>1.23.608.4</AssemblyVersion>
-        <FileVersion>1.23.608.4</FileVersion>
-        <Version>1.23.608.4</Version>
-        <PackageId>Alpex.Interfaces.Geometry</PackageId>
-        <Title>Alpex.Interfaces.Geometry</Title>
-        <Description>Struktury danych do integracji z oprogramowaniem PipelineDesigner. Zawiera definicje geometryczne: kąty, długości itp.</Description>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-        <WarningsAsErrors>NU1605</WarningsAsErrors>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-        <NoWarn>1573,1591,618</NoWarn>
-        <WarningsAsErrors>0659,0661,105,108,1570,1572,1574,1587,162,168,169,1718,1734,219,3245,414,628,649,693,8321</WarningsAsErrors>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-        <NoWarn>1573,1591,618</NoWarn>
-        <WarningsAsErrors>0659,0661,105,108,1570,1572,1574,1587,162,168,169,1718,1734,219,3245,414,628,649,693,8321</WarningsAsErrors>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">
-        <DefineConstants>$(DefineConstants);WPF</DefineConstants>
-        <UseWpf>true</UseWpf>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' != 'net'">
-        <DefineConstants>$(DefineConstants);COREFX;CORESCPROJ</DefineConstants>
-    </PropertyGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\Alpex.Interfaces.Common\Alpex.Interfaces.Common.csproj" />
-    </ItemGroup>
-    <ItemGroup>
-        <PackageReference Include="iSukces.Math" Version="1.0.23140.124" />
-        <PackageReference Include="iSukces.Translation" Version="1.0.23111.10" />
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    </ItemGroup>
-    <ItemGroup>
-        <None Remove="**\*.DotSettings" />
-    </ItemGroup>
+  <PropertyGroup>
+    <ProjectGuid>{6D77B3F7-64C0-4749-B686-DA88FB390A0D}</ProjectGuid>
+    <TargetFrameworks>net7.0;net7.0-windows</TargetFrameworks>
+    <AssemblyVersion>1.23.704.5</AssemblyVersion>
+    <FileVersion>1.23.704.5</FileVersion>
+    <Version>1.23.704.5</Version>
+    <Description>Struktury danych do integracji z oprogramowaniem PipelineDesigner. Zawiera definicje geometryczne: kąty, długości itp.</Description>
+    <PackageId>Alpex.Interfaces.Geometry</PackageId>
+    <Title>Alpex.Interfaces.Geometry</Title>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <WarningsAsErrors>NU1605</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <NoWarn>1573,1591,618</NoWarn>
+    <WarningsAsErrors>0659,0661,105,108,1570,1572,1574,1587,162,168,169,1718,1734,219,3245,414,628,649,693,8321</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <NoWarn>1573,1591,618</NoWarn>
+    <WarningsAsErrors>0659,0661,105,108,1570,1572,1574,1587,162,168,169,1718,1734,219,3245,414,628,649,693,8321</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">
+    <DefineConstants>$(DefineConstants);WPF</DefineConstants>
+    <UseWpf>true</UseWpf>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' != 'net'">
+    <DefineConstants>$(DefineConstants);COREFX;CORESCPROJ</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Alpex.Interfaces.Common\Alpex.Interfaces.Common.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="iSukces.Math" Version="1.0.23140.124" />
+    <PackageReference Include="iSukces.Translation" Version="1.0.23111.10" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="**\*.DotSettings" />
+  </ItemGroup>
+  <Import Project="../NugetCommon.props" />
 </Project>
