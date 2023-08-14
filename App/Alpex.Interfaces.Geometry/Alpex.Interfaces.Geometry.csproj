@@ -9,6 +9,7 @@
     <Description>Struktury danych do integracji z oprogramowaniem PipelineDesigner. Zawiera definicje geometryczne: kąty, długości itp.</Description>
     <PackageId>Alpex.Interfaces.Geometry</PackageId>
     <Title>Alpex.Interfaces.Geometry</Title>
+    <Copyright>Copyright © Alpex 2023</Copyright>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <WarningsAsErrors>NU1605</WarningsAsErrors>

@@ -9,6 +9,7 @@
     <Description>Podstawowe struktury danych do integracji z oprogramowaniem PipelineDesigner</Description>
     <PackageId>Alpex.Interfaces.Common</PackageId>
     <Title>Alpex.Interfaces.Common</Title>
+    <Copyright>Copyright © Alpex 2023</Copyright>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <WarningsAsErrors>NU1605</WarningsAsErrors>

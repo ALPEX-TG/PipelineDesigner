@@ -8,6 +8,7 @@
     <Version>1.23.608.4</Version>
     <PackageId>Alpex.Measure</PackageId>
     <Title>Zestaw opisujący dane związane z pomiarami rurociągu ciepłowniczego. Służy do integracji z oprogramowaniem PipelineDesigner</Title>
+    <Copyright>Copyright © Alpex 2023</Copyright>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Alpex.Interfaces.Common\Alpex.Interfaces.Common.csproj" />
