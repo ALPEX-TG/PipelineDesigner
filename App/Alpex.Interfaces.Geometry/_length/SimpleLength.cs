@@ -53,14 +53,29 @@ public readonly struct SimpleLength : ICultureFormattable, IFormattable, IEquata
         return new SimpleLength((decimal)value, 0.01m);
     }
 
+    public static SimpleLength? Cm(double? value)
+    {
+        return value is null ? null : Cm(value.Value);
+    }
+
     public static SimpleLength M(double value)
     {
         return new SimpleLength(value);
     }
 
+    public static SimpleLength? M(double? value)
+    {
+        return value is null ? null : M(value.Value);
+    }
+
     public static SimpleLength Mm(double value)
     {
         return new SimpleLength(value, 0.001m);
+    }
+
+    public static SimpleLength? Mm(double? value)
+    {
+        return value is null ? null : Mm(value.Value);
     }
 
     public static SimpleLength Mm(int value)
@@ -123,7 +138,7 @@ public readonly struct SimpleLength : ICultureFormattable, IFormattable, IEquata
         return new SimpleLength(-x.Meters);
     }
 
-    public override bool Equals(object?  other)
+    public override bool Equals(object? other)
     {
         if (other is null) return false;
         if (other.GetType() != typeof(SimpleLength)) return false;
@@ -165,6 +180,8 @@ public readonly struct SimpleLength : ICultureFormattable, IFormattable, IEquata
         return Meters.ToString(formatProvider ?? CultureInfo.CurrentCulture) + " m";
     }
 
+    #region Properties
+
     public static SimpleLength Zero => new SimpleLength(0d);
 
     public double Meters
@@ -174,4 +191,6 @@ public readonly struct SimpleLength : ICultureFormattable, IFormattable, IEquata
     }
 
     public double MiliMeters => Meters * 1000;
+
+    #endregion
 }

@@ -4,7 +4,11 @@ namespace Alpex.Interfaces.Common;
 
 public interface IIntegerBasedKey
 {
+    #region Properties
+
     int Value { get; }
+
+    #endregion
 }
 
 public static class IntegerBasedKeyExtensions
