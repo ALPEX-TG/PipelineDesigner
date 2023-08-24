@@ -20,7 +20,7 @@ namespace Alpex.Interfaces.Geometry
             Wires      = wires ?? Array.Empty<EndingInfo3D>();
         }
 
-        public static PipelineEndingInfo operator /(PipelineEndingInfo obj, Coordinates3D coordinates)
+        public static PipelineEndingInfo? operator /(PipelineEndingInfo? obj, Coordinates3D? coordinates)
         {
             if (obj is null)
                 return null;
@@ -32,7 +32,7 @@ namespace Alpex.Interfaces.Geometry
                 Transform(obj.Wires, coordinates));
         }
 
-        public static PipelineEndingInfo operator *(PipelineEndingInfo obj, Coordinates3D coordinates)
+        public static PipelineEndingInfo? operator *(PipelineEndingInfo? obj, Coordinates3D? coordinates)
         {
             if (obj is null)
                 return null;
@@ -43,7 +43,7 @@ namespace Alpex.Interfaces.Geometry
                 Transform(obj.Wires, coordinates));
         }
 
-        private static EndingInfo3D[] Transform(IReadOnlyList<EndingInfo3D> list, Coordinates3D coordinates)
+        private static EndingInfo3D[] Transform(IReadOnlyList<EndingInfo3D>? list, Coordinates3D coordinates)
         {
             if (list is null || list.Count == 0)
                 return Array.Empty<EndingInfo3D>();

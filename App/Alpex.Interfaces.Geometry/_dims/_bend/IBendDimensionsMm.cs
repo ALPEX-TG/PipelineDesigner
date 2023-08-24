@@ -1,9 +1,7 @@
 ﻿namespace Alpex.Interfaces.Geometry;
 
-public interface IBendDimensionsMm : IPipeDimensionsMm
+public interface IBendDimensionsMm : IPipeDimensionsMm, IBendingAngleProvider
 {
-    AngleDeg Angle { get; }
-
     /// <summary>
     ///     Długość ramienia A w mm
     /// </summary>
