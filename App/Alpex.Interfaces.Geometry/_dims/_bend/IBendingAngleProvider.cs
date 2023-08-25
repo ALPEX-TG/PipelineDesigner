@@ -8,5 +8,5 @@ public interface IBendingAngleProvider
     /// <summary>
     /// Kąt zagięcia dla kolana, mufy kolanowej itp.
     /// </summary>
-    AngleDeg Angle { get; }   
+    AngleDeg BendingAngle { get; }   
 }
