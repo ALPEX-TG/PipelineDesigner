@@ -1,13 +1,12 @@
 
-namespace Alpex.Interfaces.Geometry
-{
-    public interface IPipelineEndingProvider
-    {
-        PipelineEndingInfo? GetEndingInfo(int endingIndex);
+namespace Alpex.Interfaces.Geometry;
 
-        /// <summary>
-        ///     Ilość zakończeń kształtki, np.2 dla rury i kolana, 3 dla trójnika
-        /// </summary>
-        int GetEndingsCount();
-    }
+public interface IPipelineEndingProvider
+{
+    PipelineEndingInfo? GetEndingInfo(int endingIndex);
+
+    /// <summary>
+    ///     Ilość zakończeń kształtki, np.2 dla rury i kolana, 3 dla trójnika
+    /// </summary>
+    int GetEndingsCount();
 }
