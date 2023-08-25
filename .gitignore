@@ -6,3 +6,4 @@ riderModule.iml
 .idea/
 key.snk
 *.hss
+App/cleanBinObj.bat
