@@ -26,6 +26,12 @@ public readonly partial struct AngleDeg
     {
         return new Radians(a.RadiansAsDouble);
     }
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator AngleDeg(Radians a)
+    {
+        return new AngleDeg(a.ToDegrees());
+    }
 
     public static implicit operator AngleDeg(MinuteAngle a)
     {
