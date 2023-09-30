@@ -1,11 +1,13 @@
 ﻿using System;
 using Alpex.Interfaces.Common;
+using Newtonsoft.Json;
 
 namespace Alpex.Measure;
 
 // [Auto.ShouldSerializeInfo("!{0}.IsEmpty()")]
 public readonly struct VtPad : IEquatable<VtPad>
 {
+    [JsonConstructor]
     public VtPad(XAlarmContainerUid componentUid, int endIndex, XWireRouterInputWire wireIndex)
     {
         ComponentUid = componentUid;
