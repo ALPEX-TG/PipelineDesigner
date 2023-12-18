@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpex.Interfaces.Geometry.T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpex.Measure.Test", "Alpex.Measure.Test\Alpex.Measure.Test.csproj", "{5F27D33F-2EFC-456F-BCEE-6AEA8051136C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B6853B40-745E-42CE-A88E-1F3BA729E967}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{5F27D33F-2EFC-456F-BCEE-6AEA8051136C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F27D33F-2EFC-456F-BCEE-6AEA8051136C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F27D33F-2EFC-456F-BCEE-6AEA8051136C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EF5B9271-F2F9-4DE3-B6F5-042F445A8FF1} = {B6853B40-745E-42CE-A88E-1F3BA729E967}
+		{5F27D33F-2EFC-456F-BCEE-6AEA8051136C} = {B6853B40-745E-42CE-A88E-1F3BA729E967}
 	EndGlobalSection
 EndGlobal
