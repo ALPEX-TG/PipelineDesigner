@@ -240,7 +240,7 @@ public struct Length : ICultureFormattable, IEquatable<Length>
             unit = "m";
         if (unit == Unit)
             return this;
-        if (Mnozniki.TryGetValue(_unit, out var mnoznik))
+        if (Mnozniki.TryGetValue(unit, out var mnoznik))
             return new Length(GetMeters() / mnoznik, unit);
 
         return this;
