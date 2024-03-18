@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*
+using System;
 using JetBrains.Annotations;
 
 namespace Alpex.Interfaces.Common;
@@ -25,3 +26,4 @@ public sealed class ConvertFromStringCheckingMethodAttribute : Attribute
 
     public string StaticMethodName { get; }
 }
+*/

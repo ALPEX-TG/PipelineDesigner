@@ -8,7 +8,6 @@ using Newtonsoft.Json;
 
 namespace Alpex.Interfaces.Geometry;
 
-[ConvertFromStringCheckingMethod(nameof(IsValidAngleDegString))]
 [CompactSerializer]
 [TypeConverter(typeof(AngleDegTypeConverter))]
 [JsonConverter(typeof(AngleDegJsonConverter))]
@@ -39,9 +38,9 @@ public readonly partial struct AngleDeg : IEquatable<AngleDeg>, IComparable<Angl
         return dif;
     }
 
-    public static string IsValidAngleDegString(object value, CultureInfo cultureInfo)
+    public static string? IsValidAngleDegString(object? value, CultureInfo cultureInfo)
     {
-        return Parse(value as string, cultureInfo.NumberFormat).Error;
+        return Parse(value as string ?? "", cultureInfo.NumberFormat).Error;
     }
 
     public static double Normalize0180(double angle)

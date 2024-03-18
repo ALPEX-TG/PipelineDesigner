@@ -8,7 +8,6 @@ using Newtonsoft.Json;
 
 namespace Alpex.Interfaces.Geometry;
 
-[ConvertFromStringCheckingMethod(nameof(IsValidDiffMinuteAngleString))]
 [TypeConverter(typeof(DiffMinuteAngleTypeConverter))]
 [JsonConverter(typeof(DiffMinuteAngleJsonConverter))]
 [CompactSerializer]
@@ -30,9 +29,9 @@ public readonly partial struct DiffMinuteAngle : IEquatable<DiffMinuteAngle>
         return dif;
     }
 
-    public static string IsValidDiffMinuteAngleString(object value, CultureInfo cultureInfo)
+    public static string? IsValidDiffMinuteAngleString(object? value, CultureInfo cultureInfo)
     {
-        return Parse(value as string, cultureInfo.NumberFormat).Error;
+        return Parse(value as string ?? "", cultureInfo.NumberFormat).Error;
     }
 
     public static double Normalize0180(double angle)

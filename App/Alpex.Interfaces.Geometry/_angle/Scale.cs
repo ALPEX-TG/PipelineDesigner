@@ -6,7 +6,6 @@ using Alpex.Interfaces.Common;
 
 namespace Alpex.Interfaces.Geometry;
 
-[ConvertFromStringCheckingMethod(nameof(IsValidScaleString))]
 [TypeConverter(typeof(ScaleTypeConverter))]
 public readonly struct Scale : ICultureFormattable, IEquatable<Scale>
 {
@@ -29,10 +28,9 @@ public readonly struct Scale : ICultureFormattable, IEquatable<Scale>
         return a == 0 ? b : a;
     }
 
-
-    public static string IsValidScaleString(object value, CultureInfo cultureInfo)
+    public static string? IsValidScaleString(object? value, CultureInfo cultureInfo)
     {
-        return Parse(value as string, cultureInfo.NumberFormat).Error;
+        return Parse(value as string ?? "", cultureInfo.NumberFormat).Error;
     }
 
     public static bool operator ==(Scale left, Scale right)
@@ -155,8 +153,6 @@ public readonly struct Scale : ICultureFormattable, IEquatable<Scale>
 
     private static readonly Regex Re1 = new Regex($@"^{Length.FloatRegexp}\s*:\s*{Length.FloatRegexp}$");
     private static readonly Regex Re2 = new Regex($@"^{Length.FloatRegexp}$");
-
     private readonly decimal _numerator;
-
     private readonly decimal _denominator;
 }

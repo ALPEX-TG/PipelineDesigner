@@ -8,7 +8,6 @@ using Newtonsoft.Json;
 
 namespace Alpex.Interfaces.Geometry;
 
-[ConvertFromStringCheckingMethod(nameof(IsValidMinuteAngleString))]
 [TypeConverter(typeof(MinuteAngleTypeConverter))]
 [JsonConverter(typeof(MinuteAngleJsonConverter))]
 [CompactSerializer]
@@ -34,9 +33,9 @@ public readonly partial struct MinuteAngle : IEquatable<MinuteAngle>
         return new MinuteAngle(5 * (hour % 12));
     }
 
-    public static string IsValidMinuteAngleString(object value, CultureInfo cultureInfo)
+    public static string? IsValidMinuteAngleString(object? value, CultureInfo cultureInfo)
     {
-        return Parse(value as string, cultureInfo.NumberFormat).Error;
+        return Parse(value as string ?? "", cultureInfo.NumberFormat).Error;
     }
 
     public static double Normalize0180(double angle)
