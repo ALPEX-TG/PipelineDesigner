@@ -31,7 +31,7 @@
     <DefineConstants>$(DefineConstants);COREFX;CORESCPROJ</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="iSukces.Translation" Version="1.23.1218.11" />
+    <PackageReference Include="iSukces.Translation" Version="1.24.630.12" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
