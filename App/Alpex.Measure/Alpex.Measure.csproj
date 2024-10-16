@@ -4,9 +4,9 @@
     <Copyright>Copyright © Alpex 2023</Copyright>
     <ProjectGuid>{269E0760-48B1-478D-9496-C25B8B64DF87}</ProjectGuid>
     <TargetFramework>net8.0</TargetFramework>
-    <AssemblyVersion>1.24.701.9</AssemblyVersion>
-    <FileVersion>1.24.701.9</FileVersion>
-    <Version>1.24.701.9</Version>
+    <AssemblyVersion>1.24.1016.10</AssemblyVersion>
+    <FileVersion>1.24.1016.10</FileVersion>
+    <Version>1.24.1016.10</Version>
     <Authors>Internet Sukces Piotr Stęclik</Authors>
     <PackageId>Alpex.Measure</PackageId>
     <Title>Zestaw opisujący dane związane z pomiarami rurociągu ciepłowniczego. Służy do integracji z oprogramowaniem PipelineDesigner</Title>

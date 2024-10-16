@@ -4,9 +4,9 @@
     <Copyright>Copyright © Alpex 2023</Copyright>
     <ProjectGuid>{CB034AAC-3589-4735-AB41-93FC69EF023F}</ProjectGuid>
     <TargetFramework>net8.0</TargetFramework>
-    <AssemblyVersion>1.24.701.8</AssemblyVersion>
-    <FileVersion>1.24.701.8</FileVersion>
-    <Version>1.24.701.8</Version>
+    <AssemblyVersion>1.24.1016.10</AssemblyVersion>
+    <FileVersion>1.24.1016.10</FileVersion>
+    <Version>1.24.1016.10</Version>
     <Authors>Internet Sukces Piotr Stęclik</Authors>
     <Description>Podstawowe struktury danych do integracji z oprogramowaniem PipelineDesigner</Description>
     <PackageId>Alpex.Interfaces.Common</PackageId>
@@ -31,7 +31,7 @@
     <DefineConstants>$(DefineConstants);COREFX;CORESCPROJ</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="iSukces.Translation" Version="1.24.630.12" />
+    <PackageReference Include="iSukces.Translation" Version="1.24.1016.13" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
