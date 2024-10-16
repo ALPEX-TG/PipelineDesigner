@@ -7,7 +7,7 @@ using Alpex.Interfaces.Common;
 namespace Alpex.Interfaces.Geometry;
 
 [TypeConverter(typeof(ScaleTypeConverter))]
-public readonly struct Scale : ICultureFormattable, IEquatable<Scale>
+public readonly struct Scale : ICultureFormattable, IEquatable<Scale>, IFormattable
 {
     public Scale(decimal numerator, decimal denominator)
     {
@@ -111,12 +111,23 @@ public readonly struct Scale : ICultureFormattable, IEquatable<Scale>
 
     public override string ToString()
     {
-        return ToString(CultureInfo.CurrentCulture);
+        return ToString(null);
     }
 
-    public string ToString(IFormatProvider formatProvider)
+    public string ToString(string? format, IFormatProvider? formatProvider)
     {
-        return Numerator.ToString(formatProvider) + " : " + Denominator.ToString(formatProvider);
+        formatProvider ??= CultureInfo.CurrentCulture;
+        var n = Numerator.ToString(format, formatProvider);
+        var d = Denominator.ToString(format, formatProvider);
+        return $"{n} : {d}";
+    }
+
+    public string ToString(IFormatProvider? formatProvider)
+    {
+        formatProvider ??= CultureInfo.CurrentCulture;
+        var n = Numerator.ToString(formatProvider);
+        var d = Denominator.ToString(formatProvider);
+        return $"{n} : {d}";
     }
 
     public Scale TrySimplify()

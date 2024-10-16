@@ -26,7 +26,7 @@ public sealed class LengthJsonConverter : JsonConverter<Length>
 
     public static object ToJson(Length value)
     {
-        if (value.Unit == "m")
+        if (value.Unit == LengthUnits.Meter)
         {
             var rounded = Math.Floor(value.Value);
             if (rounded == value.Value)

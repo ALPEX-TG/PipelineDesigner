@@ -166,21 +166,20 @@ public readonly struct SimpleLength : ICultureFormattable, IFormattable, IEquata
         return ToString(null);
     }
 
-    public string ToString(string format, IFormatProvider formatProvider)
+    public string ToString(string? format, IFormatProvider? formatProvider)
     {
+        formatProvider ??= CultureInfo.CurrentCulture;
         var t = UnitedValuesFormatProvider.TryParse(format);
         if (t is null)
             return ToString(formatProvider);
-        var s = t.Format(Meters, "m", formatProvider ?? CultureInfo.CurrentCulture);
+        var s = t.Format(Meters, LengthUnits.Meter, formatProvider);
         return s;
     }
 
-    public string ToString(IFormatProvider formatProvider)
+    public string ToString(IFormatProvider? formatProvider)
     {
-        return Meters.ToString(formatProvider ?? CultureInfo.CurrentCulture) + " m";
+        return Meters.ToString(formatProvider ?? CultureInfo.CurrentCulture) + " " + LengthUnits.Meter;
     }
-
-    #region Properties
 
     public static SimpleLength Zero => new SimpleLength(0d);
 
@@ -191,6 +190,4 @@ public readonly struct SimpleLength : ICultureFormattable, IFormattable, IEquata
     }
 
     public double MiliMeters => Meters * 1000;
-
-    #endregion
 }

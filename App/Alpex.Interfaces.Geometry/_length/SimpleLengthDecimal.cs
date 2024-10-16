@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace Alpex.Interfaces.Geometry;
 
 [CompactSerializer]
-public readonly struct SimpleLengthDecimal : ICultureFormattable, IEquatable<SimpleLengthDecimal>
+public readonly struct SimpleLengthDecimal : ICultureFormattable, IEquatable<SimpleLengthDecimal>, IFormattable
 {
     public SimpleLengthDecimal(decimal meters)
         : this()
@@ -106,7 +106,12 @@ public readonly struct SimpleLengthDecimal : ICultureFormattable, IEquatable<Sim
         return ToString(null);
     }
 
-    public string ToString(IFormatProvider formatProvider)
+    public string ToString(string? format, IFormatProvider? formatProvider)
+    {
+        return Meters.ToString(format, formatProvider ?? CultureInfo.CurrentCulture) + " m";
+    }
+
+    public string ToString(IFormatProvider? formatProvider)
     {
         return Meters.ToString(formatProvider ?? CultureInfo.CurrentCulture) + " m";
     }

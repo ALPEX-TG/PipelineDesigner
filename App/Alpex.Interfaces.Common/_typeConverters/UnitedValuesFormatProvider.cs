@@ -1,8 +1,8 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
-using JetBrains.Annotations;
 
 namespace Alpex.Interfaces.Common;
 
@@ -26,12 +26,11 @@ public sealed class UnitedValuesFormatProvider
             sb.Append(new string(' ', spaces));
     }
 
-    [CanBeNull]
-    public static UnitedValuesFormatProvider TryParse(string x)
+    public static UnitedValuesFormatProvider? TryParse(string? text)
     {
-        if (string.IsNullOrEmpty(x))
+        if (string.IsNullOrEmpty(text))
             return null;
-        var a = SpacesBounded.Parse(x);
+        var a = SpacesBounded.Parse(text);
 
         var m = FilterRegex.Match(a.Text);
         if (m.Success)

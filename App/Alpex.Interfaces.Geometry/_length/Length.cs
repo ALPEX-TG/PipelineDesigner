@@ -10,16 +10,16 @@ namespace Alpex.Interfaces.Geometry;
 
 [TypeConverter(typeof(LengthTypeConverter))]
 [JsonConverter(typeof(LengthJsonConverter))]
-public struct Length : ICultureFormattable, IEquatable<Length>
+public struct Length : ICultureFormattable, IEquatable<Length>, IFormattable
 {
     static Length()
     {
         Mnozniki = new Dictionary<string, decimal>
         {
-            ["m"]  = 1,
-            ["cm"] = 0.01m,
-            ["mm"] = 0.001m,
-            ["km"] = 1000
+            [LengthUnits.Meter]  = 1,
+            [LengthUnits.Centimeter] = 0.01m,
+            [LengthUnits.Milimeter] = 0.001m,
+            [LengthUnits.Kilometer] = 1000
         };
     }
 
@@ -32,35 +32,35 @@ public struct Length : ICultureFormattable, IEquatable<Length>
 
     public static Length FromCentiMeter(decimal value)
     {
-        return new Length(value, "cm");
+        return new Length(value, LengthUnits.Centimeter);
     }
 
     public static Length FromMeter(decimal value)
     {
-        return new Length(value, "m");
+        return new Length(value, LengthUnits.Meter);
     }
 
     public static Length FromMeter(int value)
     {
-        return new Length(value, "m");
+        return new Length(value, LengthUnits.Meter);
     }
 
     public static Length FromMeter(long value)
     {
-        return new Length(value, "m");
+        return new Length(value, LengthUnits.Meter);
     }
 
     public static Length FromMeter(double value)
     {
-        return new Length((decimal)value, "m");
+        return new Length((decimal)value, LengthUnits.Meter);
     }
 
     public static Length FromMm(decimal value)
     {
-        return new Length(value, "mm");
+        return new Length(value, LengthUnits.Milimeter);
     }
 
-    public static string IsValidString(object value, CultureInfo cultureInfo)
+    public static string? IsValidString(object value, CultureInfo cultureInfo)
     {
         return Parse(value as string, cultureInfo.NumberFormat).Error;
     }
@@ -95,7 +95,7 @@ public struct Length : ICultureFormattable, IEquatable<Length>
         return new Length(-l.Value, l.Unit);
     }
 
-    public static ParseResult<Length> Parse(string x, NumberFormatInfo fi)
+    public static ParseResult<Length> Parse(string? x, NumberFormatInfo? fi)
     {
         x = ProcessNumber(x, fi);
         if (string.IsNullOrEmpty(x))
@@ -126,8 +126,9 @@ public struct Length : ICultureFormattable, IEquatable<Length>
         return ParseResult<Length>.NotOk(string.Format(StrUnknownUnit, unit));
     }
 
-    public static string ProcessNumber(string x, NumberFormatInfo fi)
+    public static string? ProcessNumber(string? x, NumberFormatInfo? fi)
     {
+        fi ??= CultureInfo.CurrentCulture.NumberFormat;
         return x == null
             ? null
             : x.Trim()
@@ -142,7 +143,7 @@ public struct Length : ICultureFormattable, IEquatable<Length>
 
     public static string ProcessUnit(string unit)
     {
-        unit = unit?.Trim() ?? "m";
+        unit = unit?.Trim() ?? LengthUnits.Meter;
         while (unit.Contains(" "))
             unit = unit.Replace(" ", "");
         while (unit.Contains("\t"))
@@ -173,7 +174,7 @@ public struct Length : ICultureFormattable, IEquatable<Length>
 
     public decimal GetMeters()
     {
-        if (Value == 0m || _unit == "m") return Value;
+        if (Value == 0m || _unit == LengthUnits.Meter) return Value;
         if (Mnozniki.TryGetValue(_unit, out var mnoznik))
             return Value * mnoznik;
         throw new Exception($"Unknown unit '{_unit}'");
@@ -181,28 +182,31 @@ public struct Length : ICultureFormattable, IEquatable<Length>
 
     public decimal GetMm()
     {
-        if (Value == 0m || _unit == "mm") return Value;
+        if (Value == 0m || _unit == LengthUnits.Milimeter) return Value;
         if (Mnozniki.TryGetValue(_unit, out var mnoznik))
             return Value * mnoznik * 1000;
         throw new Exception($"Unknown unit '{_unit}'");
     }
 
+    public Length ToCm() => ToUnitIfPossible(LengthUnits.Centimeter);
+    public Length ToMeter() => ToUnitIfPossible(LengthUnits.Meter);
+    public Length ToMilimeter() => ToUnitIfPossible(LengthUnits.Milimeter);
 
     public Length RoundToMiliMeter()
     {
         int? decimals = null;
-        switch (string.IsNullOrEmpty(_unit) ? "m" : _unit)
+        switch (string.IsNullOrEmpty(_unit) ? LengthUnits.Meter : _unit)
         {
-            case "m":
+            case LengthUnits.Meter:
                 decimals = 3;
                 break;
-            case "cm":
+            case LengthUnits.Centimeter:
                 decimals = 1;
                 break;
-            case "mm":
+            case LengthUnits.Milimeter:
                 decimals = 0;
                 break;
-            case "km":
+            case LengthUnits.Kilometer:
                 decimals = 6;
                 break;
         }
@@ -222,13 +226,13 @@ public struct Length : ICultureFormattable, IEquatable<Length>
         return ToString(null);
     }
 
-    public string ToString(string format, IFormatProvider formatProvider)
+    public string ToString(string? format, IFormatProvider? formatProvider)
     {
         var number = Value.ToString(format, formatProvider ?? CultureInfo.CurrentCulture);
         return string.IsNullOrEmpty(Unit) ? number : $"{number} {Unit}";
     }
 
-    public string ToString(IFormatProvider formatProvider)
+    public string ToString(IFormatProvider? formatProvider)
     {
         var number = Value.ToString(formatProvider ?? CultureInfo.CurrentCulture);
         return string.IsNullOrEmpty(Unit) ? number : $"{number} {Unit}";
@@ -237,7 +241,7 @@ public struct Length : ICultureFormattable, IEquatable<Length>
     public Length ToUnitIfPossible(string unit)
     {
         if (string.IsNullOrEmpty(unit))
-            unit = "m";
+            unit = LengthUnits.Meter;
         if (unit == Unit)
             return this;
         if (Mnozniki.TryGetValue(unit, out var mnoznik))
@@ -261,7 +265,7 @@ public struct Length : ICultureFormattable, IEquatable<Length>
 
     public string Unit
     {
-        get => _unit;
+        get => _unit ?? "";
         private set
         {
             value = ProcessUnit(value);
@@ -277,9 +281,9 @@ public struct Length : ICultureFormattable, IEquatable<Length>
 
     public decimal Value { get; }
 
-    public static string StrUnknownUnit = "Nie rozpoznano jednostki \'{0}\'.";
-    public static string StrNumberTooBigOrTooSmall = "Wartość \'{0}\' jest zbyt dużą lub zbyt małą liczbą";
-    public static string StrIsNotValid = "Wartość \'{0}\' nie jest poprawnym oznaczeniem odległości";
+    public static string StrUnknownUnit            { get; set; } = "Nie rozpoznano jednostki \'{0}\'.";
+    public static string StrNumberTooBigOrTooSmall { get; set; } = "Wartość \'{0}\' jest zbyt dużą lub zbyt małą liczbą";
+    public static string StrIsNotValid             { get; set; } = "Wartość \'{0}\' nie jest poprawnym oznaczeniem odległości";
 
     public static string FloatRegexp = @"(\s*-?\s*?(\d+)(\.\d+)?)";
 
@@ -287,5 +291,5 @@ public struct Length : ICultureFormattable, IEquatable<Length>
 
     public static readonly Dictionary<string, decimal> Mnozniki;
 
-    private string _unit;
+    private string? _unit;
 }
