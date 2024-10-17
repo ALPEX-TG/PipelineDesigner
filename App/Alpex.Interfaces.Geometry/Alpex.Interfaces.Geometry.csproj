@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Copyright>Copyright © Alpex 2023</Copyright>
+    <Copyright>Copyright © Alpex 2023-2024</Copyright>
     <ProjectGuid>{6D77B3F7-64C0-4749-B686-DA88FB390A0D}</ProjectGuid>
     <TargetFrameworks>net8.0;net8.0-windows</TargetFrameworks>
-    <AssemblyVersion>1.24.1016.10</AssemblyVersion>
-    <FileVersion>1.24.1016.10</FileVersion>
-    <Version>1.24.1016.10</Version>
+    <AssemblyVersion>1.24.1017.11</AssemblyVersion>
+    <FileVersion>1.24.1017.11</FileVersion>
+    <Version>1.24.1017.11</Version>
     <Authors>Internet Sukces Piotr Stęclik</Authors>
     <Description>Struktury danych do integracji z oprogramowaniem PipelineDesigner. Zawiera definicje geometryczne: kąty, długości itp.</Description>
     <PackageId>Alpex.Interfaces.Geometry</PackageId>
