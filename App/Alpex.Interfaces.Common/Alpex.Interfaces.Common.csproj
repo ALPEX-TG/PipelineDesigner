@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Copyright>Copyright © Alpex 2023</Copyright>
+    <Company>Alpex</Company>
+    <Copyright>Copyright © Alpex 2023-2024</Copyright>
     <ProjectGuid>{CB034AAC-3589-4735-AB41-93FC69EF023F}</ProjectGuid>
     <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     <AssemblyVersion>1.24.1202.11</AssemblyVersion>
