@@ -3,10 +3,11 @@
   <PropertyGroup>
     <Copyright>Copyright © Alpex 2023-2024</Copyright>
     <ProjectGuid>{6D77B3F7-64C0-4749-B686-DA88FB390A0D}</ProjectGuid>
-    <TargetFrameworks>net8.0;net8.0-windows</TargetFrameworks>
-    <AssemblyVersion>1.24.1017.11</AssemblyVersion>
-    <FileVersion>1.24.1017.11</FileVersion>
-    <Version>1.24.1017.11</Version>
+    <TargetFrameworks>net8.0;net8.0-windows;net9.0;net9.0-windows</TargetFrameworks>
+    <AssemblyVersion>1.24.1202.12</AssemblyVersion>
+    <FileVersion>1.24.1202.12</FileVersion>
+    <Version>1.24.1202.12</Version>
+    <LangVersion>13</LangVersion>
     <Authors>Internet Sukces Piotr Stęclik</Authors>
     <Description>Struktury danych do integracji z oprogramowaniem PipelineDesigner. Zawiera definicje geometryczne: kąty, długości itp.</Description>
     <PackageId>Alpex.Interfaces.Geometry</PackageId>
@@ -23,11 +24,7 @@
     <NoWarn>1573,1591,618</NoWarn>
     <WarningsAsErrors>0659,0661,105,108,1570,1572,1574,1587,162,168,169,1718,1734,219,3245,414,628,649,693,8321</WarningsAsErrors>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">
-    <DefineConstants>$(DefineConstants);WPF</DefineConstants>
-    <UseWpf>true</UseWpf>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
+  <PropertyGroup Condition="$(TargetFramework.EndsWith('windows'))">
     <DefineConstants>$(DefineConstants);WPF</DefineConstants>
     <UseWpf>true</UseWpf>
   </PropertyGroup>
@@ -38,8 +35,8 @@
     <ProjectReference Include="..\Alpex.Interfaces.Common\Alpex.Interfaces.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="iSukces.Math" Version="1.23.1218.127" />
-    <PackageReference Include="iSukces.Translation" Version="1.24.1016.13" />
+    <PackageReference Include="iSukces.Math" Version="1.24.1201.128" />
+    <PackageReference Include="iSukces.Translation" Version="1.24.1201.14" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
