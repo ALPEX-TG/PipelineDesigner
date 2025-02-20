@@ -141,7 +141,7 @@ public struct Length : ICultureFormattable, IEquatable<Length>, IFormattable
                 .Replace(fi.PercentDecimalSeparator, ".");
     }
 
-    public static string ProcessUnit(string unit)
+    public static string ProcessUnit(string? unit)
     {
         unit = unit?.Trim() ?? LengthUnits.Meter;
         while (unit.Contains(" "))
@@ -168,17 +168,18 @@ public struct Length : ICultureFormattable, IEquatable<Length>, IFormattable
     {
         unchecked
         {
-            return StringComparer.Ordinal.GetHashCode(Unit ?? string.Empty) * 397 ^ Value.GetHashCode();
+            return StringComparer.Ordinal.GetHashCode(Unit) * 397 ^ Value.GetHashCode();
         }
     }
 
     public decimal GetMeters()
     {
         if (Value == 0m || _unit == LengthUnits.Meter) return Value;
-        if (Mnozniki.TryGetValue(_unit, out var mnoznik))
+        if (Mnozniki.TryGetValue(_unit ?? "", out var mnoznik))
             return Value * mnoznik;
         throw new Exception($"Unknown unit '{_unit}'");
     }
+    public double GetMetersDouble() => (double)GetMeters();
 
     public decimal GetMm()
     {
@@ -277,8 +278,7 @@ public struct Length : ICultureFormattable, IEquatable<Length>, IFormattable
             _unit = value;
         }
     }
-
-
+ 
     public decimal Value { get; }
 
     public static string StrUnknownUnit            { get; set; } = "Nie rozpoznano jednostki \'{0}\'.";

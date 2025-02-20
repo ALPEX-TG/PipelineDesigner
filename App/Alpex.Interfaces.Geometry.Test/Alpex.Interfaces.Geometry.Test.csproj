@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <Copyright>Copyright © Alpex 2016-2025</Copyright>
+    <Authors>Internet Sukces Piotr Stęclik</Authors>
     <Company>Alpex</Company>
-    <Copyright>Copyright © Alpex 2023-2024</Copyright>
     <ProjectGuid>{B745F15D-84A3-407A-8132-C8C166A328A9}</ProjectGuid>
     <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     <LangVersion>13</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Authors>Internet Sukces Piotr Stęclik</Authors>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>

@@ -7,3 +7,4 @@ riderModule.iml
 key.snk
 *.hss
 App/cleanBinObj.bat
+*.user

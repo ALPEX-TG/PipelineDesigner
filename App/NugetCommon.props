@@ -1,41 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <PropertyGroup>
-        <Company>Alpex</Company>
-        <Copyright>Copyright © Alpex 2018-2023</Copyright>
-        <Product>PipelineDesigner</Product>
-        <ImplicitUsings>disable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <LangVersion>11.0</LangVersion>
-        <NoWarn>1701;1702;1591</NoWarn>
-
-        <IncludeSource>false</IncludeSource>
-        <IncludeSymbols>true</IncludeSymbols>
-        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/ALPEX-TG/PipelineDesigner</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/ALPEX-TG/PipelineDesigner</RepositoryUrl>
-        <RepositoryType>GIT</RepositoryType>
-        <PackageTags>PipelineDesigner, Alpex</PackageTags>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <PackageIcon>icon.png</PackageIcon>
-
-        <SignAssembly>true</SignAssembly>
-        <AssemblyOriginatorKeyFile>$(SignKey)</AssemblyOriginatorKeyFile>
-
-        <DefineConstants>$(DefineConstants);NUGET</DefineConstants>
-        <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    </PropertyGroup>
-    <ItemGroup>
-        <None Remove="**\*.DotSettings" />
-        <None Include="..\icon.png">
-            <Pack>True</Pack>
-            <PackagePath />
-            <Link>icon.png</Link>
-        </None>        
-    </ItemGroup>
+  <PropertyGroup>
+    <Product>PipelineDesigner</Product>
+    <ProjectGuid>{E7B50F92-3B53-499B-9DD2-5DECE6D427E3}</ProjectGuid>
+    <LangVersion>13</LangVersion>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(SignKey)</AssemblyOriginatorKeyFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+    <DefineConstants>$(DefineConstants);NUGET</DefineConstants>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageTags>PipelineDesigner, Alpex</PackageTags>
+    <RepositoryType>GIT</RepositoryType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSource>false</IncludeSource>
+    <IncludeSymbols>true</IncludeSymbols>
+    <PackageProjectUrl>https://github.com/ALPEX-TG/PipelineDesigner</PackageProjectUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryUrl>https://github.com/ALPEX-TG/PipelineDesigner</RepositoryUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="**\*.DotSettings" />
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath />
+      <Link>icon.png</Link>
+    </None>
+  </ItemGroup>
 </Project>
