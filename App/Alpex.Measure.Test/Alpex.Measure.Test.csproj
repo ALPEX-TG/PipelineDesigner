@@ -5,7 +5,7 @@
     <Authors>Internet Sukces Piotr Stęclik</Authors>
     <Company>Alpex</Company>
     <ProjectGuid>{3289700E-1F10-44B7-A7E3-40319B1A2E1E}</ProjectGuid>
-    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net8.0;net9.0</TargetFrameworks>
     <LangVersion>13</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>

@@ -5,10 +5,10 @@
     <Authors>Internet Sukces Piotr Stęclik</Authors>
     <Company>Alpex</Company>
     <ProjectGuid>{6D77B3F7-64C0-4749-B686-DA88FB390A0D}</ProjectGuid>
-    <TargetFrameworks>net8.0;net8.0-windows;net9.0;net9.0-windows</TargetFrameworks>
-    <AssemblyVersion>1.24.1202.12</AssemblyVersion>
-    <FileVersion>1.24.1202.12</FileVersion>
-    <Version>1.24.1202.12</Version>
+    <TargetFrameworks>net6.0;net6.0-windows;net8.0;net8.0-windows;net9.0;net9.0-windows</TargetFrameworks>
+    <AssemblyVersion>1.25.323.13</AssemblyVersion>
+    <FileVersion>1.25.323.13</FileVersion>
+    <Version>1.25.323.13</Version>
     <LangVersion>13</LangVersion>
     <Nullable>enable</Nullable>
     <Description>Struktury danych do integracji z oprogramowaniem PipelineDesigner. Zawiera definicje geometryczne: kąty, długości itp.</Description>

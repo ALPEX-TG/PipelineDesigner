@@ -5,7 +5,7 @@
     <Authors>Internet Sukces Piotr Stęclik</Authors>
     <Company>Alpex</Company>
     <ProjectGuid>{CB034AAC-3589-4735-AB41-93FC69EF023F}</ProjectGuid>
-    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net8.0;net9.0</TargetFrameworks>
     <AssemblyVersion>1.24.1202.11</AssemblyVersion>
     <FileVersion>1.24.1202.11</FileVersion>
     <Version>1.24.1202.11</Version>
