@@ -34,9 +34,9 @@ public struct GridXy : ICultureFormattable, IFormattable, IEquatable<GridXy>
         culture ??= CultureInfo.InvariantCulture;
         if (parts.Length != 2)
             return ParseResult<GridXy>.NotOk(ConversionTranslations.InvalidFormat);
-        if (!int.TryParse(parts[0], culture, out var x))
+        if (!int.TryParse(parts[0], NumberStyles.Any, culture, out var x))
             return ParseResult<GridXy>.NotOk(string.Format(ConversionTranslations.InvalidCountTextPar, "X"));
-        if (!int.TryParse(parts[1], culture, out var y))
+        if (!int.TryParse(parts[1], NumberStyles.Any, culture, out var y))
             return ParseResult<GridXy>.NotOk(string.Format(ConversionTranslations.InvalidCountTextPar, "Y"));
         return new GridXy(x, y);
     }

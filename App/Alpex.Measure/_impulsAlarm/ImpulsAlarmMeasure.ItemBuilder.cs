@@ -11,7 +11,7 @@ public sealed partial class ImpulsAlarmMeasure
         {
         }
 
-        public ItemBuilder(Item source)
+        public ItemBuilder(Item? source)
         {
             if (source is null) return;
             Type                = source.Type;
