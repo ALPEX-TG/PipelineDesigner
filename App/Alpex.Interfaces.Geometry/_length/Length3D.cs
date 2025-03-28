@@ -1,4 +1,3 @@
-#nullable enable
 using System;
 using System.ComponentModel;
 using System.Globalization;
@@ -19,6 +18,11 @@ public struct Length3D : ICultureFormattable, IFormattable
     public static Length3D FromMm(decimal x, decimal y, decimal z)
     {
         return new Length3D(Length.FromMm(x), Length.FromMm(y), Length.FromMm(z));
+    }
+
+    public static Length3D FromMeter(decimal x, decimal y, decimal z)
+    {
+        return new Length3D(Length.FromMeter(x), Length.FromMeter(y), Length.FromMeter(z));
     }
 
     public static ParseResult<Length3D> Parse(string? text, CultureInfo? culture)
@@ -58,6 +62,10 @@ public struct Length3D : ICultureFormattable, IFormattable
     public Length3D ToMilimeter()
     {
         return ToUnitIfPossible(LengthUnits.Milimeter);
+    }
+    public Length3D ToMeter()
+    {
+        return ToUnitIfPossible(LengthUnits.Meter);
     }
 
     public string ToString(IFormatProvider? formatProvider)
