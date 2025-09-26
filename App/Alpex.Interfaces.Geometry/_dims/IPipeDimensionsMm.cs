@@ -9,6 +9,4 @@ public interface IPipeDimensionsMm : IInsulatedSteelPipeDimensionsMm
     ///     Grubość plastikowej osłony na zewnątrz pianki
     /// </summary>
     double PlasticCoveringThickness { get; }
-
-    double SteelThickness { get; }
 }

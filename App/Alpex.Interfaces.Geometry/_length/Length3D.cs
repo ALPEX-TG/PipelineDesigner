@@ -6,7 +6,7 @@ using Alpex.Interfaces.Common;
 namespace Alpex.Interfaces.Geometry;
 
 [TypeConverter(typeof(Length3DTypeConverter))]
-public struct Length3D : ICultureFormattable, IFormattable
+public struct Length3D : ICultureFormattable, IFormattable, IEquatable<Length3D>
 {
     public Length3D(Length x, Length y, Length z)
     {
@@ -15,14 +15,24 @@ public struct Length3D : ICultureFormattable, IFormattable
         Z = z;
     }
 
+    public static Length3D FromMeter(decimal x, decimal y, decimal z)
+    {
+        return new Length3D(Length.FromMeter(x), Length.FromMeter(y), Length.FromMeter(z));
+    }
+
     public static Length3D FromMm(decimal x, decimal y, decimal z)
     {
         return new Length3D(Length.FromMm(x), Length.FromMm(y), Length.FromMm(z));
     }
 
-    public static Length3D FromMeter(decimal x, decimal y, decimal z)
+    public static bool operator ==(Length3D left, Length3D right)
     {
-        return new Length3D(Length.FromMeter(x), Length.FromMeter(y), Length.FromMeter(z));
+        return left.Equals(right);
+    }
+
+    public static bool operator !=(Length3D left, Length3D right)
+    {
+        return !left.Equals(right);
     }
 
     public static ParseResult<Length3D> Parse(string? text, CultureInfo? culture)
@@ -31,7 +41,6 @@ public struct Length3D : ICultureFormattable, IFormattable
         if (parts is null)
             return new Length3D();
         culture = culture ?? CultureInfo.InvariantCulture;
-
 
         if (parts.Length != 3)
             return ParseResult<Length3D>.NotOk(ConversionTranslations.InvalidFormat);
@@ -54,18 +63,39 @@ public struct Length3D : ICultureFormattable, IFormattable
         return new Length3D(x.Value, y.Value, z.Value);
     }
 
+    public bool Equals(Length3D other)
+    {
+        return X.Equals(other.X) && Y.Equals(other.Y) && Z.Equals(other.Z);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        return obj is Length3D other && Equals(other);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(X, Y, Z);
+    }
+
+    public bool HasVolume()
+    {
+        return X.Value > 0 && Y.Value > 0 && Z.Value > 0;
+    }
+
     public Length3D ToCentiMeter()
     {
         return ToUnitIfPossible(LengthUnits.Centimeter);
     }
 
-    public Length3D ToMilimeter()
-    {
-        return ToUnitIfPossible(LengthUnits.Milimeter);
-    }
     public Length3D ToMeter()
     {
         return ToUnitIfPossible(LengthUnits.Meter);
+    }
+
+    public Length3D ToMilimeter()
+    {
+        return ToUnitIfPossible(LengthUnits.Milimeter);
     }
 
     public string ToString(IFormatProvider? formatProvider)
@@ -100,11 +130,6 @@ public struct Length3D : ICultureFormattable, IFormattable
     public Length X { get; }
     public Length Y { get; }
     public Length Z { get; }
-
-    public bool HasVolume()
-    {
-        return X.Value > 0 && Y.Value > 0 && Z.Value > 0;
-    }
 }
 
 public sealed class Length3DTypeConverter : BasicTypeConverter<Length3D>

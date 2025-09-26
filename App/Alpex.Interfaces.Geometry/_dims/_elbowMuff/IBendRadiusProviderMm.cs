@@ -16,8 +16,6 @@ public interface IBendRadiusProviderMm
 
 }
 
-
-
 public static class BendRadiusProviderMmExtensions
 {
     public static SimpleLength GetEffectiveBendRadius(this IBendRadiusProviderMm radiusProviderMm)
