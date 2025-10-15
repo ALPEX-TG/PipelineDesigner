@@ -1,7 +1,8 @@
 ﻿namespace Alpex.Interfaces.Geometry;
 
-public interface IBendDimensionsMm : IPipeDimensionsMm, IBendingAngleProvider
+public interface IBendDimensionsMm : IPipeDimensionsMm, IBendingAngleProvider, IBendCustomArmProvider
 {
+    /*
     /// <summary>
     ///     Długość ramienia A w mm
     /// </summary>
@@ -11,17 +12,20 @@ public interface IBendDimensionsMm : IPipeDimensionsMm, IBendingAngleProvider
     ///     Długość ramienia B w mm
     /// </summary>
     double ArmLengthB { get; }
+*/
 }
 
+/*
 public static class BendDimensionsMmExtensions
 {
-    public static SimpleLength GetArmLengthA(this IBendDimensionsMm dims)
+    public static SimpleLength GetArmLengthA(this IBendDimensionsMm? dims)
     {
         return SimpleLength.Mm(dims?.ArmLengthA ?? 0);
     }
 
-    public static SimpleLength GetArmLengthB(this IBendDimensionsMm dims)
+    public static SimpleLength GetArmLengthB(this IBendDimensionsMm? dims)
     {
         return SimpleLength.Mm(dims?.ArmLengthB ?? 0);
     }
 }
+*/

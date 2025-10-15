@@ -6,4 +6,5 @@ namespace Alpex.Interfaces.Geometry;
 public interface IBendCodeChanger
 {
     string GetCodeForDifferentAngle(AngleDeg angle);
+    string GetCodeForDifferentArms(ArmLengths arms);
 }
