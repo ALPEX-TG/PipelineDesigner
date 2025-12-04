@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Product>PipelineDesigner</Product>
     <ProjectGuid>{E7B50F92-3B53-499B-9DD2-5DECE6D427E3}</ProjectGuid>
-    <LangVersion>13</LangVersion>
+    <LangVersion>14</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <SignAssembly>true</SignAssembly>

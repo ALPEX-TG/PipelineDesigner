@@ -5,11 +5,11 @@
     <Authors>Internet Sukces Piotr Stęclik</Authors>
     <Company>Alpex</Company>
     <ProjectGuid>{CB034AAC-3589-4735-AB41-93FC69EF023F}</ProjectGuid>
-    <TargetFrameworks>net6.0;net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net8.0;net9.0;net10.0</TargetFrameworks>
     <AssemblyVersion>1.25.926.12</AssemblyVersion>
     <FileVersion>1.25.926.12</FileVersion>
     <Version>1.25.926.12</Version>
-    <LangVersion>13</LangVersion>
+    <LangVersion>14</LangVersion>
     <Nullable>enable</Nullable>
     <Description>Podstawowe struktury danych do integracji z oprogramowaniem PipelineDesigner</Description>
     <PackageId>Alpex.Interfaces.Common</PackageId>
@@ -34,7 +34,7 @@
     <DefineConstants>$(DefineConstants);COREFX;CORESCPROJ</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="iSukces.Translation" Version="1.25.709.15" />
+    <PackageReference Include="iSukces.Translation" Version="1.25.1203.16" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
