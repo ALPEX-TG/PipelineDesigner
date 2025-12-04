@@ -1,6 +1,4 @@
-﻿using JetBrains.Annotations;
-
-namespace Alpex.Interfaces.Common;
+﻿namespace Alpex.Interfaces.Common;
 
 public interface IOrderedValue<out T>
 {
@@ -17,7 +15,7 @@ public readonly struct SimpleColumn : IOrderedValue<string>
         Order  = order;
     }
 
-    public static SimpleColumn Make([CanBeNull] IOrderedValue<string> value, int defaultOrder)
+    public static SimpleColumn Make(IOrderedValue<string>? value, int defaultOrder)
     {
         switch (value)
         {

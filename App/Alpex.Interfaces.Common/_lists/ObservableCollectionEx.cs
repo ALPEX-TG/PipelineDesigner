@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
 
 namespace Alpex.Interfaces.Common
 {
@@ -53,12 +52,12 @@ namespace Alpex.Interfaces.Common
         {
         }
 
-        public ObservableCollectionEx([NotNull] List<T> list)
+        public ObservableCollectionEx(List<T> list)
             : base(list)
         {
         }
 
-        public ObservableCollectionEx([NotNull] IEnumerable<T> collection)
+        public ObservableCollectionEx(IEnumerable<T> collection)
             : base(collection)
         {
         }
