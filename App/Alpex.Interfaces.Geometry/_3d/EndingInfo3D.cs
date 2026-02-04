@@ -1,9 +1,4 @@
 ﻿using iSukces.Mathematics;
-#if WPF
-using System.Windows.Media.Media3D;
-#else
-using iSukces.Mathematics.Compatibility;
-#endif
 
 namespace Alpex.Interfaces.Geometry;
 
@@ -47,14 +42,12 @@ public readonly struct EndingInfo3D
         return new EndingInfo3D(point, direction, obj.Tag);
     }
 
-#if WPF
     public static EndingInfo3D operator *(EndingInfo3D obj, Matrix3D coordinates)
     {
         var point     = obj.Point * coordinates;
         var direction = obj.Direction * coordinates;
         return new EndingInfo3D(point, direction, obj.Tag);
     }
-#endif
 
     public static EndingInfo3D operator *(EndingInfo3D obj, Coord3D coordinates)
     {

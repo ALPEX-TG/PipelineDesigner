@@ -58,7 +58,7 @@ public readonly struct Scale : ICultureFormattable, IEquatable<Scale>, IFormatta
         return new Scale(angle.Numerator * number, angle.Denominator).TrySimplify();
     }
 
-    public static ParseResult<Scale> Parse(string x, NumberFormatInfo fi)
+    public static ParseResult<Scale> Parse(string? x, NumberFormatInfo fi)
     {
         x = Length.ProcessNumber(x, fi);
         if (string.IsNullOrEmpty(x))

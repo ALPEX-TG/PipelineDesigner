@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using iSukces.Mathematics;
-#if WPF
-using System.Windows.Media.Media3D;
-#else
-using iSukces.Mathematics.Compatibility;
-#endif
+
 namespace Alpex.Interfaces.Geometry;
 
 [ImmutableObject(true)]
-public sealed partial class PipelineEndingInfo
+public sealed class PipelineEndingInfo
 {
     public PipelineEndingInfo(IReadOnlyList<EndingInfo3D>? steelPipes, IReadOnlyList<EndingInfo3D>? wires)
     {
@@ -31,6 +27,16 @@ public sealed partial class PipelineEndingInfo
             Transform(obj.Wires, coordinates));
     }
 
+    public static PipelineEndingInfo? operator /(PipelineEndingInfo? obj, Matrix3D matrix)
+    {
+        if (obj is null)
+            return null;
+        matrix = matrix.GetInverted();
+        return new PipelineEndingInfo(
+            Transform(obj.SteelPipes, matrix),
+            Transform(obj.Wires, matrix));
+    }
+
     public static PipelineEndingInfo? operator *(PipelineEndingInfo? obj, Coordinates3D? coordinates)
     {
         if (obj is null)
@@ -42,15 +48,40 @@ public sealed partial class PipelineEndingInfo
             Transform(obj.Wires, coordinates));
     }
 
+    public static PipelineEndingInfo? operator *(PipelineEndingInfo? obj, Matrix3D matrix)
+    {
+        if (obj is null)
+            return null;
+        return new PipelineEndingInfo(
+            Transform(obj.SteelPipes, matrix),
+            Transform(obj.Wires, matrix));
+    }
+
     private static EndingInfo3D[] Transform(IReadOnlyList<EndingInfo3D>? list, Coordinates3D coordinates)
     {
         if (list is null || list.Count == 0)
-            return Array.Empty<EndingInfo3D>();
+            return [];
 
         var count  = list.Count;
         var result = new EndingInfo3D[count];
         for (var i = count - 1; i >= 0; i--)
             result[i] = list[i] * coordinates;
+        return result;
+    }
+
+
+    private static IReadOnlyList<EndingInfo3D> Transform(IReadOnlyList<EndingInfo3D>? list, Matrix3D matrix)
+    {
+        if (list is null || list.Count == 0)
+            return [];
+
+        var count  = list.Count;
+        var result = new EndingInfo3D[count];
+        for (var i = count - 1; i >= 0; i--)
+        {
+            result[i] = list[i] * matrix;
+        }
+
         return result;
     }
 
@@ -84,42 +115,3 @@ public sealed partial class PipelineEndingInfo
 
     public IReadOnlyList<EndingInfo3D> Wires { get; }
 }
-#if WPF
-partial class PipelineEndingInfo
-{
-    public static PipelineEndingInfo? operator /(PipelineEndingInfo? obj, Matrix3D matrix)
-    {
-        if (obj is null)
-            return null;
-        matrix.Invert();
-        return new PipelineEndingInfo(
-            Transform(obj.SteelPipes, matrix),
-            Transform(obj.Wires, matrix));
-    }
-
-    public static PipelineEndingInfo? operator *(PipelineEndingInfo? obj, Matrix3D matrix)
-    {
-        if (obj is null)
-            return null;
-        return new PipelineEndingInfo(
-            Transform(obj.SteelPipes, matrix),
-            Transform(obj.Wires, matrix));
-    }
-
-
-    private static IReadOnlyList<EndingInfo3D> Transform(IReadOnlyList<EndingInfo3D>? list, Matrix3D matrix)
-    {
-        if (list is null || list.Count == 0)
-            return Array.Empty<EndingInfo3D>();
-
-        var count  = list.Count;
-        var result = new EndingInfo3D[count];
-        for (var i = count - 1; i >= 0; i--)
-        {
-            result[i] = list[i] * matrix;
-        }
-
-        return result;
-    }
-}
-#endif

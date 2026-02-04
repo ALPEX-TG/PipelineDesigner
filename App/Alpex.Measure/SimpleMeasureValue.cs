@@ -51,14 +51,6 @@ public sealed class SimpleMeasureValue : IMeasuredValue, IEquatable<SimpleMeasur
 
     public static ParseResult<SimpleMeasureValue> Parse(string? text)
     {
-        ParseResult<SimpleMeasureValue> Err(string msg)
-        {
-            var error = $"wartość '{text}' nie jest prawidłowym oznaczenim wielkości mierzonej.";
-            if (!string.IsNullOrEmpty(msg))
-                error += " " + msg;
-            return ParseResult<SimpleMeasureValue>.NotOk(error);
-        }
-
         text = text?.Trim();
         if (text == "?")
             return new SimpleMeasureValue(MeasureStatus.NotMeasurable, 0, MeasureUnit.Empty);
@@ -90,6 +82,14 @@ public sealed class SimpleMeasureValue : IMeasuredValue, IEquatable<SimpleMeasur
         }
 
         return new SimpleMeasureValue(oper, value, unit);
+
+        ParseResult<SimpleMeasureValue> Err(string msg)
+        {
+            var error = $"wartość '{text}' nie jest prawidłowym oznaczenim wielkości mierzonej.";
+            if (!string.IsNullOrEmpty(msg))
+                error += " " + msg;
+            return ParseResult<SimpleMeasureValue>.NotOk(error);
+        }
     }
 
     public override bool Equals(object? other)

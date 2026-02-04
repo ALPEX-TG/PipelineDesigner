@@ -120,7 +120,7 @@ public readonly partial struct MinuteAngle : IEquatable<MinuteAngle>
     }
 
 
-    public static ParseResult<MinuteAngle> Parse(string x, NumberFormatInfo fi)
+    public static ParseResult<MinuteAngle> Parse(string? x, NumberFormatInfo fi)
     {
         x = Length.ProcessNumber(x, fi);
         if (string.IsNullOrEmpty(x))

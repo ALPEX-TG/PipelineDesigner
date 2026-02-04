@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Copyright>Copyright © Alpex 2016-2025</Copyright>
+    <Copyright>Copyright © Alpex 2016-2026</Copyright>
     <Authors>Internet Sukces Piotr Stęclik</Authors>
     <Company>Alpex</Company>
     <ProjectGuid>{269E0760-48B1-478D-9496-C25B8B64DF87}</ProjectGuid>
-    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
-    <AssemblyVersion>1.25.1204.13</AssemblyVersion>
-    <FileVersion>1.25.1204.13</FileVersion>
-    <Version>1.25.1204.13</Version>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <AssemblyVersion>1.26.202.14</AssemblyVersion>
+    <FileVersion>1.26.202.14</FileVersion>
+    <Version>1.26.202.14</Version>
     <LangVersion>14</LangVersion>
     <Nullable>enable</Nullable>
     <PackageId>Alpex.Measure</PackageId>
@@ -18,7 +18,7 @@
     <ProjectReference Include="..\Alpex.Interfaces.Common\Alpex.Interfaces.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.102">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

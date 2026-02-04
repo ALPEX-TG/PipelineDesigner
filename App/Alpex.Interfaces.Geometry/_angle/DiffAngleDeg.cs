@@ -70,12 +70,9 @@ public readonly partial struct DiffAngleDeg : IEquatable<DiffAngleDeg>
 
     private static decimal NormalizeDiffAngleDeg(decimal angle)
     {
-        const int full = 360;
-        if (angle > full)
-            angle -= full;
-        else if (angle < -full)
-            angle += full;
-        return angle;
+        if (angle < 0)
+            return -Normalize0360(-angle);
+        return Normalize0360(angle);
     }
 
 
@@ -128,7 +125,7 @@ public readonly partial struct DiffAngleDeg : IEquatable<DiffAngleDeg>
     }
 
 
-    public static ParseResult<DiffAngleDeg> Parse(string x, NumberFormatInfo fi)
+    public static ParseResult<DiffAngleDeg> Parse(string? x, NumberFormatInfo fi)
     {
         x = Length.ProcessNumber(x, fi);
         if (string.IsNullOrEmpty(x))

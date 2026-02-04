@@ -146,7 +146,7 @@ public readonly partial struct AngleDeg : IEquatable<AngleDeg>, IComparable<Angl
         return new AngleDeg(angle.Degrees * number);
     }
 
-    public static ParseResult<AngleDeg> Parse(string x, NumberFormatInfo fi)
+    public static ParseResult<AngleDeg> Parse(string? x, NumberFormatInfo fi)
     {
         x = Length.ProcessNumber(x, fi);
         if (string.IsNullOrEmpty(x))

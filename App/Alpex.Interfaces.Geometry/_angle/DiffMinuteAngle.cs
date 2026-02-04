@@ -128,7 +128,7 @@ public readonly partial struct DiffMinuteAngle : IEquatable<DiffMinuteAngle>
     }
 
 
-    public static ParseResult<DiffMinuteAngle> Parse(string x, NumberFormatInfo fi)
+    public static ParseResult<DiffMinuteAngle> Parse(string? x, NumberFormatInfo fi)
     {
         x = Length.ProcessNumber(x, fi);
         if (string.IsNullOrEmpty(x))
