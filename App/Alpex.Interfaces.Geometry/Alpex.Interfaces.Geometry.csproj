@@ -6,9 +6,9 @@
     <Company>Alpex</Company>
     <ProjectGuid>{6D77B3F7-64C0-4749-B686-DA88FB390A0D}</ProjectGuid>
     <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
-    <AssemblyVersion>1.26.202.17</AssemblyVersion>
-    <FileVersion>1.26.202.17</FileVersion>
-    <Version>1.26.202.17</Version>
+    <AssemblyVersion>1.26.207.18</AssemblyVersion>
+    <FileVersion>1.26.207.18</FileVersion>
+    <Version>1.26.207.18</Version>
     <LangVersion>14</LangVersion>
     <Nullable>enable</Nullable>
     <Description>Struktury danych do integracji z oprogramowaniem PipelineDesigner. Zawiera definicje geometryczne: kąty, długości itp.</Description>
