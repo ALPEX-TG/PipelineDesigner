@@ -75,12 +75,6 @@ public readonly partial struct MinuteAngle : IEquatable<MinuteAngle>
         return minutes >= 60 ? minutes - minutes / 60 * 60 : minutes;
     }
 
-    public static bool operator ==(MinuteAngle left, MinuteAngle right)
-    {
-        return Equals(left, right);
-    }
-
-
     public static explicit operator MinuteAngle(int x)
     {
         return new MinuteAngle(x);
@@ -104,10 +98,6 @@ public readonly partial struct MinuteAngle : IEquatable<MinuteAngle>
         return SinusCosinus.FromAngleDeg(x.Minutes);
     }
 
-    public static bool operator !=(MinuteAngle left, MinuteAngle right)
-    {
-        return !Equals(left, right);
-    }
 
     public static MinuteAngle operator *(MinuteAngle angle, int number)
     {
@@ -135,24 +125,11 @@ public readonly partial struct MinuteAngle : IEquatable<MinuteAngle>
         return ParseResult<MinuteAngle>.NotOk($"Nierozpoznana jednostka '{unit}'");
     }
 
-    public override bool Equals(object?  other)
-    {
-        if (other is null) return false;
-        if (other.GetType() != typeof(MinuteAngle)) return false;
-        return Equals((MinuteAngle)other);
-    }
-
-    public bool Equals(MinuteAngle other)
-    {
-        return Minutes == other.Minutes;
-    }
-
     public override int GetHashCode()
     {
         return Minutes;
     }
-
-
+    
     public bool IsZero()
     {
         return Minutes == 0;

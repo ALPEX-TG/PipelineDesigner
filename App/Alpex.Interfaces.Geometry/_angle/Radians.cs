@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Alpex.Interfaces.Geometry;
 
-public readonly struct Radians
+public readonly partial struct Radians
 {
     public Radians(double radians)
     {
@@ -28,19 +28,9 @@ public readonly struct Radians
         return new Radians(r.Value / factor);
     }
 
-    public static bool operator ==(Radians left, Radians right)
-    {
-        return left.Value == right.Value;
-    }
-
     public static implicit operator Radians(double radians)
     {
         return new Radians(radians);
-    }
-
-    public static bool operator !=(Radians left, Radians right)
-    {
-        return left.Value != right.Value;
     }
 
     public static Radians operator *(Radians r, double factor)
@@ -61,13 +51,6 @@ public readonly struct Radians
     public double Cos()
     {
         return Math.Cos(Value);
-    }
-
-    public override bool Equals(object?  obj)
-    {
-        if (obj is Radians rad)
-            return Value.Equals(rad.Value);
-        return false;
     }
 
     public override int GetHashCode()

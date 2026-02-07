@@ -10,7 +10,7 @@ namespace Alpex.Interfaces.Geometry;
 [CompactSerializer]
 [TypeConverter(typeof(SimpleLengthTypeConverter))]
 [JsonConverter(typeof(SimpleLengthJsonConverter))]
-public readonly struct SimpleLength : ICultureFormattable, IFormattable, IEquatable<SimpleLength>
+public readonly partial struct SimpleLength : ICultureFormattable, IFormattable, IEquatable<SimpleLength>
 {
     internal SimpleLength(decimal meters)
     {
@@ -103,19 +103,9 @@ public readonly struct SimpleLength : ICultureFormattable, IFormattable, IEquata
         return new SimpleLength(left.Meters / right);
     }
 
-    public static bool operator ==(SimpleLength left, SimpleLength right)
-    {
-        return Equals(left, right);
-    }
-
     public static explicit operator Length(SimpleLength l)
     {
         return Length.FromMeter((decimal)l.Meters);
-    }
-
-    public static bool operator !=(SimpleLength left, SimpleLength right)
-    {
-        return !Equals(left, right);
     }
 
     public static SimpleLength operator *(SimpleLength left, double right)
@@ -136,18 +126,6 @@ public readonly struct SimpleLength : ICultureFormattable, IFormattable, IEquata
     public static SimpleLength operator -(SimpleLength x)
     {
         return new SimpleLength(-x.Meters);
-    }
-
-    public override bool Equals(object? other)
-    {
-        if (other is null) return false;
-        if (other.GetType() != typeof(SimpleLength)) return false;
-        return Equals((SimpleLength)other);
-    }
-
-    public bool Equals(SimpleLength other)
-    {
-        return Meters.Equals(other.Meters);
     }
 
     public override int GetHashCode()

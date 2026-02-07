@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace Alpex.Interfaces.Geometry;
 
 [CompactSerializer]
-public readonly struct SimpleLengthDecimal : ICultureFormattable, IEquatable<SimpleLengthDecimal>, IFormattable
+public readonly partial struct SimpleLengthDecimal : ICultureFormattable, IEquatable<SimpleLengthDecimal>, IFormattable
 {
     public SimpleLengthDecimal(decimal meters)
         : this()
@@ -39,11 +39,6 @@ public readonly struct SimpleLengthDecimal : ICultureFormattable, IEquatable<Sim
         return new SimpleLengthDecimal(left.Meters / right);
     }
 
-    public static bool operator ==(SimpleLengthDecimal left, SimpleLengthDecimal right)
-    {
-        return Equals(left, right);
-    }
-
     public static explicit operator SimpleLengthDecimal(Length x)
     {
         return new SimpleLengthDecimal(x.GetMeters());
@@ -52,11 +47,6 @@ public readonly struct SimpleLengthDecimal : ICultureFormattable, IEquatable<Sim
     public static explicit operator Length(SimpleLengthDecimal x)
     {
         return Length.FromMeter(x.Meters);
-    }
-
-    public static bool operator !=(SimpleLengthDecimal left, SimpleLengthDecimal right)
-    {
-        return !Equals(left, right);
     }
 
     public static SimpleLengthDecimal operator *(SimpleLengthDecimal left, decimal right)
@@ -77,18 +67,6 @@ public readonly struct SimpleLengthDecimal : ICultureFormattable, IEquatable<Sim
     public static SimpleLengthDecimal operator -(SimpleLengthDecimal x)
     {
         return new SimpleLengthDecimal(-x.Meters);
-    }
-
-    public override bool Equals(object?  other)
-    {
-        if (other is null) return false;
-        if (other.GetType() != typeof(SimpleLengthDecimal)) return false;
-        return Equals((SimpleLengthDecimal)other);
-    }
-
-    public bool Equals(SimpleLengthDecimal other)
-    {
-        return Meters.Equals(other.Meters);
     }
 
     public override int GetHashCode()

@@ -70,18 +70,13 @@ public readonly partial struct AngleDeg : IEquatable<AngleDeg>, IComparable<Angl
 
     private static decimal NormalizeAngleDeg(decimal angle)
     {
-        return angle < 0 || angle >= 360 ? angle - Math.Floor(angle / 360) * 360 : angle;
+        return angle is < 0 or >= 360 ? angle - Math.Floor(angle / 360) * 360 : angle;
     }
 
 
     public static AngleDeg operator /(AngleDeg angle, decimal number)
     {
         return new AngleDeg(angle.Degrees / number);
-    }
-
-    public static bool operator ==(AngleDeg left, AngleDeg right)
-    {
-        return Equals(left, right);
     }
 
     public static explicit operator AngleDeg(decimal x)
@@ -92,18 +87,6 @@ public readonly partial struct AngleDeg : IEquatable<AngleDeg>, IComparable<Angl
     public static explicit operator decimal(AngleDeg x)
     {
         return x.Degrees;
-    }
-
-    public static bool operator >(AngleDeg left, AngleDeg right)
-    {
-        if (Equals(left, right)) return false;
-        return left.CompareTo(right) > 0;
-    }
-
-    public static bool operator >=(AngleDeg left, AngleDeg right)
-    {
-        if (Equals(left, right)) return true;
-        return left.CompareTo(right) >= 0;
     }
 
     public static implicit operator SinusCosinus(AngleDeg x)
@@ -117,23 +100,6 @@ public readonly partial struct AngleDeg : IEquatable<AngleDeg>, IComparable<Angl
         if (x.Degrees == 270m)
             return new SinusCosinus(-1, 0);
         return SinusCosinus.FromAngleDeg((double)x.Degrees);
-    }
-
-    public static bool operator !=(AngleDeg left, AngleDeg right)
-    {
-        return !Equals(left, right);
-    }
-
-    public static bool operator <(AngleDeg left, AngleDeg right)
-    {
-        if (Equals(left, right)) return false;
-        return left.CompareTo(right) < 0;
-    }
-
-    public static bool operator <=(AngleDeg left, AngleDeg right)
-    {
-        if (Equals(left, right)) return true;
-        return left.CompareTo(right) <= 0;
     }
 
     public static AngleDeg operator *(AngleDeg angle, decimal number)
@@ -160,35 +126,11 @@ public readonly partial struct AngleDeg : IEquatable<AngleDeg>, IComparable<Angl
             return new AngleDeg(value);
         return ParseResult<AngleDeg>.NotOk($"Nierozpoznana jednostka '{unit}'");
     }
-
-    public int CompareTo(AngleDeg other)
-    {
-        return Degrees.CompareTo(other.Degrees);
-    }
-
-    public int CompareTo(object obj)
-    {
-        if (obj is null) return 1;
-        return obj is AngleDeg other
-            ? CompareTo(other)
-            : throw new ArgumentException("Object must be of type AngleDeg");
-    }
+    
 
     public double Cos()
     {
         return MathEx.CosDeg((double)Degrees);
-    }
-
-    public override bool Equals(object?  other)
-    {
-        if (other is null) return false;
-        if (other.GetType() != typeof(AngleDeg)) return false;
-        return Equals((AngleDeg)other);
-    }
-
-    public bool Equals(AngleDeg other)
-    {
-        return Degrees.Equals(other.Degrees);
     }
 
     public string GetFriendlyDebugAngle()

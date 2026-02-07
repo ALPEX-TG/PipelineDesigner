@@ -10,7 +10,7 @@ namespace Alpex.Interfaces.Geometry;
 
 [TypeConverter(typeof(LengthTypeConverter))]
 [JsonConverter(typeof(LengthJsonConverter))]
-public struct Length : ICultureFormattable, IEquatable<Length>, IFormattable
+public partial struct Length : ICultureFormattable, IFormattable
 {
     static Length()
     {
@@ -144,9 +144,9 @@ public struct Length : ICultureFormattable, IEquatable<Length>, IFormattable
     public static string ProcessUnit(string? unit)
     {
         unit = unit?.Trim() ?? LengthUnits.Meter;
-        while (unit.Contains(" "))
+        while (unit.Contains(' '))
             unit = unit.Replace(" ", "");
-        while (unit.Contains("\t"))
+        while (unit.Contains('\t'))
             unit = unit.Replace("\t", "");
         return unit;
     }

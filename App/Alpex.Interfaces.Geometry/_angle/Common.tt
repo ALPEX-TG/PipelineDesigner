@@ -1,0 +1,73 @@
+<#@ template language="C#" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+using System;
+
+namespace Alpex.Interfaces.Geometry;
+<#
+    Info[] types = [
+        new Info("AngleDeg", "Degrees", true),
+        new Info("MinuteAngle", "Minutes", true),
+        new Info("Radians", "Value", true),
+        ];
+    foreach (var type in types)
+    {
+        WriteLine($"partial struct {type.Name} : IComparable<{type.Name}>, IComparable");
+        WriteLine("{");
+        WriteLine($"    public int CompareTo({type.Name} other) => {type.Value}.CompareTo(other.{type.Value});");
+        WriteLine("");
+        WriteLine("    public int CompareTo(object? obj)");
+        WriteLine("    {");
+        WriteLine("        if (obj is null) return 1;");
+        WriteLine($"        return obj is {type.Name} other ? CompareTo(other) : throw new ArgumentException($\"Object must be of type {{nameof({type.Name})}}\");");
+        WriteLine("    }");
+        WriteLine("");
+
+        {
+            var ops = "<,>,<=,>=".Split(',');
+            foreach (var op in ops)
+            {
+                WriteLine($"    public static bool operator {op}({type.Name} left, {type.Name} right)");
+                WriteLine($"        => left.CompareTo(right) {op} 0;");
+                WriteLine("");
+            }
+        }
+        if (type.AddEquals)
+        {
+            WriteLine("    public override bool Equals(object? other)");
+            WriteLine("    {");
+            WriteLine("        if (other is null) return false;");
+            WriteLine($"        if (other.GetType() != typeof({type.Name})) return false;");
+            WriteLine($"        return Equals(({type.Name})other);");
+            WriteLine("    }");
+            WriteLine("");
+            
+            WriteLine($"    public bool Equals({type.Name} other)");
+            WriteLine("    {");
+            WriteLine($"        return {type.Value}.Equals(other.{type.Value});");
+            WriteLine("    }");
+            WriteLine("");
+            
+            WriteLine($"    public static bool operator ==({type.Name} left, {type.Name} right)");
+            WriteLine("        => Equals(left, right);");
+            WriteLine("");
+            
+            WriteLine($"    public static bool operator !=({type.Name} left, {type.Name} right)");
+            WriteLine("        => !Equals(left, right);");
+            WriteLine("");
+        }
+        WriteLine("}");
+        WriteLine("");
+    }
+
+
+#>
+<#+
+    public class Info(string name, string value, bool addEquals = true)
+    {
+        public string Name { get; } = name;
+        public string Value { get; } = value;
+        public bool AddEquals { get; } = addEquals;
+    }
+
+#>
