@@ -33,9 +33,9 @@
     <ProjectReference Include="..\Alpex.Interfaces.Common\Alpex.Interfaces.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="iSukces.Math" Version="2.26.120.133" />
-    <PackageReference Include="iSukces.Translation" Version="1.25.1203.16" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.102">
+    <PackageReference Include="iSukces.Math" Version="2.26.226.134" />
+    <PackageReference Include="iSukces.Translation" Version="1.26.204.17" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.103">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
