@@ -6,9 +6,9 @@
     <Company>Alpex</Company>
     <ProjectGuid>{6D77B3F7-64C0-4749-B686-DA88FB390A0D}</ProjectGuid>
     <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
-    <AssemblyVersion>1.26.301.19</AssemblyVersion>
-    <FileVersion>1.26.301.19</FileVersion>
-    <Version>1.26.301.19</Version>
+    <AssemblyVersion>1.26.409.20</AssemblyVersion>
+    <FileVersion>1.26.409.20</FileVersion>
+    <Version>1.26.409.20</Version>
     <LangVersion>14</LangVersion>
     <Nullable>enable</Nullable>
     <Description>Struktury danych do integracji z oprogramowaniem PipelineDesigner. Zawiera definicje geometryczne: kąty, długości itp.</Description>
@@ -33,15 +33,25 @@
     <ProjectReference Include="..\Alpex.Interfaces.Common\Alpex.Interfaces.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="iSukces.Math" Version="2.26.226.134" />
+    <PackageReference Include="iSukces.Math" Version="2.26.409.135" />
     <PackageReference Include="iSukces.Translation" Version="1.26.204.17" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.103">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.201">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="_angle\Common.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
+    <Compile Update="_length\Common.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
     <None Remove="**\*.DotSettings" />
     <None Update="_length\Common.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -51,18 +61,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Common.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="_length\Common.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Common.tt</DependentUpon>
-    </Compile>
-    <Compile Update="_angle\Common.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Common.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <Import Project="../NugetCommon.props" />
 </Project>
